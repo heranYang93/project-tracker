@@ -12,72 +12,89 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 
 </head>
 
 <body>
-    <header>
-        <!-- Moment.js -->
-    </header>
+    <nav class="">
+        <header>
+            <!-- Moment.js -->
+        </header>
+
+        <div class="container text-center ">
+            <nav >
+                <h1 style="font-weight: bold;">Project Tracker</h1>
+                <h2 style="font-weight: bold;">Current Time and Date:</h2>
+                <h2 style="font-weight: bold;" id="date"></h2>
 
 
 
-    <nav>
+            </nav>
+        </div>
+
+    
+    </nav>
+
+
+
+
         <!-- boring stuff -->
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary " style="margin: 12px; " data-toggle="modal"
             data-target="#exampleModal">
-            This is a button
+            Add Project
         </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Form</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name of the project</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Type of the project</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Project Type 1</option>
-                                    <option>Project Type 2</option>
-                                    <option>Project Type 3</option>
-                                    <option>Project Type 4</option>
-                                    <option>Project Type 5</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="hour">Hourly wage</label>
-                                <input type="text" class="form-control" id="hour" aria-describedby="emailHelp">
-                            </div>
-                            <p>Date: <input type="text" id="datepicker"></p>
 
-                            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name of the project</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Type of the project</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Project Type 1</option>
+                                <option>Project Type 2</option>
+                                <option>Project Type 3</option>
+                                <option>Project Type 4</option>
+                                <option>Project Type 5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hour">Hourly wage</label>
+                            <input type="text" class="form-control" id="hour" aria-describedby="emailHelp">
+                        </div>
+                        <p>Date: <input type="text" id="datepicker"></p>
+
+                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
+    </div>
 
- 
-    </nav>
+
+
 
     <table>
         <!-- Place to render contents -->
@@ -88,6 +105,23 @@
         $(function () {
             $("#datepicker").datepicker();
         });
+
+
+        function clock() {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() ;
+            var time = today.toLocaleTimeString();
+            var dateTime = date + ' ' + time;
+            console.log(dateTime);
+            document.getElementById('date').innerHTML = dateTime;
+ 
+        }
+
+        setInterval(clock, 1000);
+
+
+
+
     </script>
 
 
